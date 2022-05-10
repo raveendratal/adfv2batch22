@@ -1,0 +1,38 @@
+{
+	"name": "ds_adlsgen1_customer_csv_source",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_adlsgen1_source",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "activites"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureDataLakeStoreLocation",
+				"fileName": "cusotmer_source.csv"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "'"
+		},
+		"schema": [
+			{
+				"name": "id",
+				"type": "String"
+			},
+			{
+				"name": "name",
+				"type": "String"
+			},
+			{
+				"name": "loc",
+				"type": "String"
+			}
+		]
+	}
+}
