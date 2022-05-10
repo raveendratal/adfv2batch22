@@ -1,0 +1,27 @@
+{
+	"name": "ds_adlsgen2_customer_csv_target",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_adlsgen2_target",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "activites"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "customer_target.csv",
+				"folderPath": "target",
+				"fileSystem": "lakestorage"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
