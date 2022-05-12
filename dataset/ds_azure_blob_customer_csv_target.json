@@ -1,0 +1,26 @@
+{
+	"name": "ds_azure_blob_customer_csv_target",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_azure_blob_target",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "onprem_migration"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "customers.csv",
+				"container": "images"
+			},
+			"columnDelimiter": "|",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}

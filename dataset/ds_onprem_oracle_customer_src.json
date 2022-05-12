@@ -1,0 +1,19 @@
+{
+	"name": "ds_onprem_oracle_customer_src",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_orcl_onprem_source",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "onprem_migration"
+		},
+		"annotations": [],
+		"type": "OracleTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "SH",
+			"table": "CUSTOMERS"
+		}
+	}
+}
