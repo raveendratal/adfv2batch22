@@ -1,0 +1,20 @@
+{
+	"name": "ds_azure_blob_binary_target",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_azure_blob_target",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "onprem_migration"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": "images"
+			}
+		}
+	}
+}
