@@ -5,6 +5,11 @@
 			"referenceName": "ls_adlsgen2_target",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"file_name": {
+				"type": "string"
+			}
+		},
 		"folder": {
 			"name": "activites"
 		},
@@ -13,7 +18,10 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "customer_target.csv",
+				"fileName": {
+					"value": "@dataset().file_name",
+					"type": "Expression"
+				},
 				"folderPath": "target",
 				"fileSystem": "lakestorage"
 			},

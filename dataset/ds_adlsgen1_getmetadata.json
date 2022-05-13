@@ -1,0 +1,21 @@
+{
+	"name": "ds_adlsgen1_getmetadata",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_adlsgen1_source",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureDataLakeStoreLocation"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
