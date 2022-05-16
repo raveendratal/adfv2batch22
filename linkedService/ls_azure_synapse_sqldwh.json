@@ -1,0 +1,12 @@
+{
+	"name": "ls_azure_synapse_sqldwh",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureSqlDW",
+		"typeProperties": {
+			"connectionString": "integrated security=False;encrypt=True;connection timeout=30;data source=batch22sqlserver.database.windows.net;initial catalog=synapsedwh;user id=sqladmin",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQDVDQ0I1MDBCLTkwMzctNDZGMy04OURDLTZCRTQ5NTg0QTJFM18yYTAxY2ExMi1iY2U1LTRlOWUtODA4Yy1lOTFmYjkxYjE4NzciDQp9"
+		}
+	}
+}
