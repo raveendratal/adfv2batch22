@@ -1,0 +1,153 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "batch22adfv2"
+		},
+		"ls_adlsgen2_target_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'ls_adlsgen2_target'"
+		},
+		"ls_azure_blob_target_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ls_azure_blob_target'"
+		},
+		"ls_azure_synapse_sqldwh_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ls_azure_synapse_sqldwh'"
+		},
+		"ls_onprem_file_source_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'ls_onprem_file_source'"
+		},
+		"ls_orcl_onprem_source_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ls_orcl_onprem_source'"
+		},
+		"ls_adlsgen1_source_properties_typeProperties_dataLakeStoreUri": {
+			"type": "string",
+			"defaultValue": "https://adlsgen1batch22.azuredatalakestore.net/webhdfs/v1"
+		},
+		"ls_adlsgen1_source_properties_typeProperties_tenant": {
+			"type": "string",
+			"defaultValue": "89556edd-0e4a-43c1-bbcb-9139ff026b1f"
+		},
+		"ls_adlsgen1_source_properties_typeProperties_subscriptionId": {
+			"type": "string",
+			"defaultValue": "e0bf1971-b822-46ca-8e4a-72555f0a959e"
+		},
+		"ls_adlsgen1_source_properties_typeProperties_resourceGroupName": {
+			"type": "string",
+			"defaultValue": "rg-dev-batch22-de"
+		},
+		"ls_adlsgen2_target_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://batch22adlsgen2.dfs.core.windows.net"
+		},
+		"ls_azure_keyvault_properties_typeProperties_baseUrl": {
+			"type": "string",
+			"defaultValue": "https://batch22keyvault.vault.azure.net/"
+		},
+		"ls_onprem_file_source_properties_typeProperties_host": {
+			"type": "string",
+			"defaultValue": "E:\\files"
+		},
+		"ls_onprem_file_source_properties_typeProperties_userId": {
+			"type": "string",
+			"defaultValue": "raveendra"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "batch22adfv2_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"ls_adlsgen2_target_accountKey": {
+						"value": "[parameters('ls_adlsgen2_target_accountKey')]"
+					},
+					"ls_azure_blob_target_connectionString": {
+						"value": "[parameters('ls_azure_blob_target_connectionString')]"
+					},
+					"ls_azure_synapse_sqldwh_connectionString": {
+						"value": "[parameters('ls_azure_synapse_sqldwh_connectionString')]"
+					},
+					"ls_onprem_file_source_password": {
+						"value": "[parameters('ls_onprem_file_source_password')]"
+					},
+					"ls_orcl_onprem_source_connectionString": {
+						"value": "[parameters('ls_orcl_onprem_source_connectionString')]"
+					},
+					"ls_adlsgen1_source_properties_typeProperties_dataLakeStoreUri": {
+						"value": "[parameters('ls_adlsgen1_source_properties_typeProperties_dataLakeStoreUri')]"
+					},
+					"ls_adlsgen1_source_properties_typeProperties_tenant": {
+						"value": "[parameters('ls_adlsgen1_source_properties_typeProperties_tenant')]"
+					},
+					"ls_adlsgen1_source_properties_typeProperties_subscriptionId": {
+						"value": "[parameters('ls_adlsgen1_source_properties_typeProperties_subscriptionId')]"
+					},
+					"ls_adlsgen1_source_properties_typeProperties_resourceGroupName": {
+						"value": "[parameters('ls_adlsgen1_source_properties_typeProperties_resourceGroupName')]"
+					},
+					"ls_adlsgen2_target_properties_typeProperties_url": {
+						"value": "[parameters('ls_adlsgen2_target_properties_typeProperties_url')]"
+					},
+					"ls_azure_keyvault_properties_typeProperties_baseUrl": {
+						"value": "[parameters('ls_azure_keyvault_properties_typeProperties_baseUrl')]"
+					},
+					"ls_onprem_file_source_properties_typeProperties_host": {
+						"value": "[parameters('ls_onprem_file_source_properties_typeProperties_host')]"
+					},
+					"ls_onprem_file_source_properties_typeProperties_userId": {
+						"value": "[parameters('ls_onprem_file_source_properties_typeProperties_userId')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "batch22adfv2_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'batch22adfv2_ArmTemplate_0')]"
+			]
+		}
+	]
+}
