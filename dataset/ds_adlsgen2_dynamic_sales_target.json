@@ -1,0 +1,36 @@
+{
+	"name": "ds_adlsgen2_dynamic_sales_target",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_adlsgen2_target",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"target_file": {
+				"type": "string"
+			},
+			"target_folder": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "sales_load"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().target_file",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@concat('source/',dataset().target_folder)",
+					"type": "Expression"
+				},
+				"fileSystem": "lakestorage"
+			}
+		}
+	}
+}

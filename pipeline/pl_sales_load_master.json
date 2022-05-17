@@ -1,0 +1,97 @@
+{
+	"name": "pl_sales_load_master",
+	"properties": {
+		"activities": [
+			{
+				"name": "jobdetails",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlDWSource",
+						"sqlReaderQuery": "select * from dbo.dynamic order by id",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "ds_synapse_job_details_lkp",
+						"type": "DatasetReference"
+					},
+					"firstRowOnly": false
+				}
+			},
+			{
+				"name": "ForEach1",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "jobdetails",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('jobdetails').output.value",
+						"type": "Expression"
+					},
+					"activities": [
+						{
+							"name": "pl_sales_load_child",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "pl_sales_load_child",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"id": {
+										"value": "@item().id",
+										"type": "Expression"
+									},
+									"job_name": {
+										"value": "@item().job_name",
+										"type": "Expression"
+									},
+									"stg_table": {
+										"value": "@item().stg_table",
+										"type": "Expression"
+									},
+									"target_table": {
+										"value": "@item().target_table",
+										"type": "Expression"
+									},
+									"proc_name": {
+										"value": "@item().proc_name",
+										"type": "Expression"
+									},
+									"source_folder": {
+										"value": "@item().source_folder",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
+				}
+			}
+		],
+		"folder": {
+			"name": "sales_load"
+		},
+		"annotations": []
+	}
+}
