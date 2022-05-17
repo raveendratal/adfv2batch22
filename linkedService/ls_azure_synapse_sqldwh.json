@@ -1,22 +1,18 @@
 {
-	"name": "ls_orcl_onprem_source",
+	"name": "ls_azure_synapse_sqldwh",
 	"properties": {
 		"annotations": [],
-		"type": "Oracle",
+		"type": "AzureSqlDW",
 		"typeProperties": {
-			"connectionString": "host=localhost;port=1521;sid=ORCL;user id=sh",
+			"connectionString": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=batch22sqlserver.database.windows.net;Initial Catalog=synapsedwh;User ID=sqladmin",
 			"password": {
 				"type": "AzureKeyVaultSecret",
 				"store": {
 					"referenceName": "ls_azure_keyvault",
 					"type": "LinkedServiceReference"
 				},
-				"secretName": "onprem-oracle-sh-password"
+				"secretName": "synapse-sqladmin-password"
 			}
-		},
-		"connectVia": {
-			"referenceName": "SelfHosted-IR",
-			"type": "IntegrationRuntimeReference"
 		}
 	},
 	"type": "Microsoft.DataFactory/factories/linkedservices"
