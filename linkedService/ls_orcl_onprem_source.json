@@ -1,23 +1,16 @@
 {
 	"name": "ls_orcl_onprem_source",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
 	"properties": {
 		"annotations": [],
 		"type": "Oracle",
 		"typeProperties": {
 			"connectionString": "host=localhost;port=1521;sid=ORCL;user id=sh",
-			"password": {
-				"type": "AzureKeyVaultSecret",
-				"store": {
-					"referenceName": "ls_azure_keyvault",
-					"type": "LinkedServiceReference"
-				},
-				"secretName": "onprem-oracle-sh-password"
-			}
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiIwYjk3NzFhNy0yMGFjLTQ5OTAtOTYxZi1hNzM1ZDIwYzEzZDIiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
 		},
 		"connectVia": {
 			"referenceName": "SelfHosted-IR",
 			"type": "IntegrationRuntimeReference"
 		}
-	},
-	"type": "Microsoft.DataFactory/factories/linkedservices"
+	}
 }
